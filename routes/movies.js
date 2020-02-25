@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const Movie = require('../models/Movie');
 
-/* GET home page. */
+// get all movies
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Movies API' });
+  res.send('respond with a resource');
 });
 
 module.exports = router;
