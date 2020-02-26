@@ -11,6 +11,21 @@ router.get('/', (req, res) => {
     .catch(err => res.status(500).json({ message: 'Server Error', err }));
 });
 
+// find movie by title
+router.get('/findmovie', (req, res) => {
+  Movie.findOne({ title: req.query.title })
+    .then(title => {
+      if (title) {
+        // render find word page with word
+        // return res.render('findWord', { word });
+        return res.status(200).json({title})
+      } else {
+        return res.status(400).json({ message: 'Movie not found' });
+      }
+    })
+    .catch(err => res.status(500).json({ message: 'Server Error' }));
+});
+
 // add movie to database
 router.post('/addmovie', (req, res) => {
   // check to see if movie is unique
